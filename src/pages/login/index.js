@@ -21,12 +21,13 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  // useEffect(()=> {
-  //   const accessToken = localStorage.getItem('accessToken');    
-  //   if(accessToken) {
-  //     router.push('/blog-list')
-  //   }
-  // })
+  useEffect(()=> {
+    const accessToken = localStorage.getItem('accessToken');    
+    console.log('🚀 ~ file: index.js:26 ~ useEffect ~ accessToken:', accessToken);
+    if(accessToken) {
+      router.push('/blogList')
+    }
+  })
   const handleOnSumit = (event) => {
     event.preventDefault();
     axios({
@@ -42,7 +43,7 @@ export default function Login() {
       .then(function (response) {
         localStorage.setItem("accessToken", response.data.data.token);
         localStorage.setItem('userDetails', JSON.stringify(response?.data?.data?.user));
-        response?.data?.data?.token ?  router.push('/blog-app') : router.push('/login');
+        response?.data?.data?.token ?  router.push('/blog-list') : router.push('/login');
 
       })
       .catch(function (error) {

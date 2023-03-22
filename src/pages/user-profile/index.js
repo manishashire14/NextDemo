@@ -16,7 +16,7 @@ import { useRouter } from 'next/router';
 import {configurations, constants} from '../../config/index';
 const theme = createTheme();
 
-export default function BlogApp() {
+export default function UserProfile() {
 
   return (<h1>hi Blog APP</h1>);
 }
